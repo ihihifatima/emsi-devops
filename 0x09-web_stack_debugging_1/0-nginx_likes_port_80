@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
-# Run as non-root user; Take username from first arg passed
+#Requirement: Nginx must be running, and listening on port 80 of all the server’s active IPv4 IPs
+#Bug: sudo nginx status returns 'not running'; netstat -lpn does not show port 80
+#Solution: https://stackoverflow.com/questions/16021481/nginx-not-listening-to-port-80
 
-sudo -u "$1" whoami
+#rm /etc/nginx/sites-enabled/default
+#ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+#sudo service nginx restart
+
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
+sudo service nginx restart
