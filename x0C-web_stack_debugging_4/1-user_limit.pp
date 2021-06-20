@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
-# Run as non-root user; Take username from first arg passed
-
-sudo -u "$1" whoami
+# Change the OS configuration
+file { 'change os':
+    ensure  => present,
+    path    => '/etc/security/limits.conf',
+    content => '#This file has been wiped hahaha'
+}
