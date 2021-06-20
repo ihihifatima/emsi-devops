@@ -7,3 +7,4 @@ service { 'nginx':
 ensure    => running,
 subscribe => Exec['myfix'],
 }
+
